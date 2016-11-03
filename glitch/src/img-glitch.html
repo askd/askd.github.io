@@ -3,7 +3,7 @@
     const glitchProto = Object.create(HTMLElement.prototype);
     const template = `
       <style>
-        div {
+        :host {
           position: relative;
           display: inline-block;
           overflow: hidden;
@@ -24,7 +24,7 @@
           left: 1px;
         }
       </style>
-      <div><img /><img /><img /></div>
+      <img /><img /><img />
     `;
 
     glitchProto.createdCallback = glitchCreatedCallback;
@@ -43,6 +43,10 @@
     function glitchCreatedCallback(){
       this.shadowRoot = this.createShadowRoot();
       this.shadowRoot.innerHTML = template;
+
+      const isSupported = 'registerElement' in document;
+      console.log(isSupported)
+      WebComponents.ShadowCSS.shimStyling(this.shadowRoot, 'img-glitch');
     }
 
     function glitchAttachedCallback() {
