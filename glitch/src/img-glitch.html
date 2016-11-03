@@ -1,0 +1,165 @@
+<script>
+  (function(){
+    const glitchProto = Object.create(HTMLElement.prototype);
+    const template = `
+      <style>
+        div {
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          line-height: 0;
+        }
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+        img:not(:first-of-type) {
+          position: absolute;
+          top: 0;
+        }
+        img:nth-of-type(2) {
+          left: -1px;
+        }
+        img:nth-of-type(3) {
+          left: 1px;
+        }
+      </style>
+      <div><img /><img /><img /></div>
+    `;
+
+    glitchProto.createdCallback = glitchCreatedCallback;
+    glitchProto.attachedCallback = glitchAttachedCallback;
+    glitchProto.detachedCallback = glitchDetachedCallback;
+    glitchProto.attributeChangedCallback = glitchAttributeChangedCallback;
+
+    glitchProto.start = start;
+    glitchProto.stop = stop;
+    glitchProto.update = update;
+    glitchProto.setSrc = setSrc;
+    glitchProto.visibilityChange = visibilityChange;
+    glitchProto.bind = bind;
+    glitchProto.unbind = unbind;
+
+    function glitchCreatedCallback(){
+      this.shadowRoot = this.createShadowRoot();
+      this.shadowRoot.innerHTML = template;
+    }
+
+    function glitchAttachedCallback() {
+      this.listeners = {
+        update:           this.update.bind(this),
+        visibilityChange: this.visibilityChange.bind(this),
+      };
+
+      this.interval = null;
+      this.images = this.shadowRoot.querySelectorAll('img');
+
+      this.setSrc(this.getAttribute('src'));
+
+      this.start();
+      this.bind();
+    }
+
+    function glitchDetachedCallback() {
+      this.unbind();
+      this.stop();
+    }
+
+    function glitchAttributeChangedCallback(name, oldVal, newVal) {
+      if (name === 'src' && !!newVal) {
+        this.setSrc(newVal);
+      }
+    }
+
+    function start() {
+      if (this.interval) return;
+
+      this.interval = requestInterval(this.listeners.update, 120);
+    }
+
+    function stop() {
+      if (!this.interval) return;
+
+      clearRequestInterval(this.interval);
+      this.interval = null;
+    }
+
+    function update() {
+      const width = this.images[0].offsetWidth;
+      const height = this.images[0].offsetHeight;
+
+      for (var i=1; i<3; i++) {
+        this.images[i].style.clip = getRect(i, width, height, -1);
+      }
+    }
+
+    function setSrc(src) {
+      if (!src) return;
+
+      for (var i=0; i<3; i++) {
+        this.images[i].setAttribute('src', src);
+      }
+    }
+
+    function visibilityChange() {
+      if (document.visibilityState === 'hidden') {
+        this.stop();
+      } else {
+        this.start();
+      }
+    }
+
+    function bind() {
+      document.addEventListener('visibilitychange', this.listeners.visibilityChange);
+    }
+
+    function unbind() {
+      document.removeEventListener('visibilitychange', this.listeners.visibilityChange);
+    }
+
+    function requestInterval(fn, delay) {
+      if (!window.requestAnimationFrame) {
+        return window.setInterval(fn, delay);
+      }
+
+      var start = new Date().getTime();
+      const handle = {};
+
+      function loop() {
+        const current = new Date().getTime();
+
+        if (current - start >= delay) {
+          fn.call();
+          start = new Date().getTime();
+        }
+
+        handle.value = window.requestAnimationFrame(loop);
+      };
+
+      handle.value = window.requestAnimationFrame(loop);
+
+      return handle;
+    }
+
+    function clearRequestInterval(handle) {
+      if (!window.cancelAnimationFrame) {
+        window.clearInterval(handle);
+        return;
+      }
+      window.cancelAnimationFrame(handle.value)
+    }
+
+    function getRand(value) {
+      return Math.round(Math.random() * value);
+    }
+
+    function getRect(num, width, height, size) {
+      const height1 = getRand(height);
+      const height2 = getRand(height);
+      const rect = height1 + 'px,' + width + 'px,' + height2 + 'px,0';
+      return 'rect(' + rect + ')';
+    }
+
+    document.registerElement('img-glitch', { prototype: glitchProto });
+  })();
+</script>

@@ -3,27 +3,26 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Demo - X-Tag Glitch</title>
-
-  <link rel="stylesheet" type="text/css" href="x-tag-components.css"/>
-  <link rel="stylesheet" type="text/css" href="src/main.css"/>
-
-  <script type="text/javascript" src="x-tag-components.js"></script>
-  <script type="text/javascript" src="src/main.js"></script>
-
+  <title>Demo - Glitch Custom Element</title>
+  <script src="webcomponents.min.js"></script>
+  <link rel="import" href="src/img-glitch.html">
   <style>
-    x-glitch {
+    body {
+      font-family: sans-serif;
+    }
+    img-glitch {
       width: 300px;
     }
   </style>
 </head>
 
 <body>
-
+  <h1>Glitch Custom Element</h1>
   <div>
-  	<x-glitch src="img/demo.jpg" />
+  	<img-glitch src="img/demo.jpg" />
   </div>
-
+  <p>Fork me on GitHub: <a href="https://github.com/askd/glitch">github.com/askd/glitch</a></p>
+  <p>Polymer version: <a href="https://github.com/askd/polymer-glitch">github.com/askd/polymer-glitch</a></p>
 </body>
 
 </html>
