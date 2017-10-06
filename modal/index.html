@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Знакомьтесь, модальное окно</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/material/styles/screen-16x10.css">
+	<style>
+		.section h2 {
+			color: #44709e;
+		}
+		.window {
+			position: relative;
+			width: 448px;
+	    height: 280px;
+	    margin: 56px 0 0 56px;
+	    border: 6px solid #44709e;
+	  }
+	  .window_standard {
+	  	border-style: dashed;
+	  }
+	  .window_shadow {
+	    box-shadow: 0 0 56px #44709e;
+		}
+		.window--close {
+			position: absolute;
+			top: 28px;
+			right: 28px;
+			width: 56px;
+			height: 56px;
+			transform: rotate(45deg);
+		}
+		.window--close::before,
+		.window--close::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #44709e;
+		}
+		.window--close::before {
+			width: 6px;
+			height: 100%;
+			margin: 0 25px;
+		}
+		.window--close::after {
+			width: 100%;
+			height: 6px;
+			margin: 25px 0;
+		}
+		.window--button {
+			position: absolute;
+			left: 28px;
+			bottom: 28px;
+			width: 168px;
+			height: 56px;
+			border: 6px solid #44709e;
+		}
+		.window--button_right {
+			left: auto;
+			right: 28px;
+		}
+		.window--button_dark {
+			background-color: #44709e;
+		}
+	</style>
+</head>
+<body class="shower list">
+
+	<header class="caption">
+		<h1>Знакомьтесь, модальное окно</h1>
+		<p>Анна Селезнёва, Evil Martians</p>
+	</header>
+
+	<section class="slide" id="cover">
+		<h2>Знакомьтесь, модальное окно</h2>
+		<div class="window--close"></div>
+		<p class="conf">
+			<img src="images/web-standards.svg" width="56" height="56" alt="Web Standards">
+			Web Standards Days, Минск, 21 октября 2017
+		</p>
+		<style>
+			#cover h2 {
+				font-size: 98px;
+				color: #44709e;
+			}
+			#cover .window--close {
+				top: 56px;
+				right: 56px;
+			}
+			#cover .conf {
+				position: relative;
+				margin-top: 140px;
+				padding-left: 70px;
+				line-height: 56px;
+				color: #8bb02c;
+			}
+			#cover .conf img {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="about">
+		<h2>Привет!</h2>
+		<p>Меня зовут Аня, и я марсианка</p>
+		<div class="block">
+			<img class="logo" src="images/evilmartians.svg" width="180" height="180" alt="Evil Martians">
+			<div class="links links_evlms">
+				<p>
+					<a href="http://evilmartians.com" target="_blank">evilmartians.com</a>
+					<br/>
+					<a href="http://evilmartians.com/chronicles" target="_blank">evl.ms/blog</a>
+					</p>
+			</div>
+		</div>
+		<div class="block block_cult next">
+			<img class="logo logo_cult" src="images/cultofmartians.svg" width="108" height="180" alt="Cult of Martians">
+			<div class="links links_cult">
+				<p>
+					<a href="http://cultofmartians.com" target="_blank">cultofmartians.com</a>
+				</p>
+			</div>
+		</div>
+		<style>
+			#about .block {
+			  float: left;
+				width: 460px;
+			}
+			#about .block_cult {
+			  width: 356px;
+			}
+			#about .logo {
+			  float: left;
+			}
+			#about .logo_cult {
+				opacity: 0.8;
+			}
+			#about .links {
+
+			}
+			#about .links_evlms {
+				margin-left: 220px;
+			}
+			#about .links_cult {
+				margin-left: 140px;
+			}
+		</style>
+	</section>
+	
+	<section class="slide">
+		<h2></h2>
+		<figure>
+			<blockquote>
+				<p>В графическом интерфейсе пользователя модальным называется окно, которое блокирует работу пользователя с родительским приложением до тех пор, пока пользователь это окно не закроет.</p>
+			</blockquote>
+			<figcaption><a href="https://ru.wikipedia.org/wiki/Модальное_окно">Википедия</a></figcaption>
+		</figure>
+	</section>
+
+	<section class="slide">
+		<h2>Цель модального окна</h2>
+		<ul>
+			<li>Привлечь внимание пользователя</li>
+			<li>Получить данные от пользователя</li>
+			<li>Показать дополнительную информацию</li>
+		</ul>	
+	</section>
+
+	<section class="slide">
+		<img class="cover" src="images/annoying.jpg" width="1024" height="640" alt="Раздражающее окно">
+	</section>
+
+	<section class="slide">
+		<p>TODO Сайдбары на моб. это тоже окна</p>
+	</section>
+
+
+	<section class="slide">
+		<h2>План</h2>
+		<ol>
+			<li>Стандартное окно</li>
+			<li>Простое окно</li>
+			<li>Удобное окно</li>
+			<li>Продвинутое окно</li>
+		</ol>
+	</section>
+
+
+	<section class="slide section">
+		<h2>1. Стандартное окно</h2>
+		<div class="window window_standard"></div>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">История</h2>
+	</section>
+
+	<section class="slide" id="alert">
+		<h2>alert</h2>
+		<pre>
+			<code>alert('Resistance is futile');</code>
+		</pre>
+		<figure>
+			<img src="images/alert.png" width="624" height="200" alt="alert">
+		</figure>
+		<style>
+			#alert pre {
+				margin: 48px 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="confirm">
+		<h2>confirm</h2>
+		<pre>
+			<code>confirm('Resistance is futile');</code>
+		</pre>
+		<figure>
+			<img src="images/confirm.png" width="624" height="200" alt="confirm">
+		</figure>
+		<style>
+			#confirm pre {
+				margin: 48px 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="prompt">
+		<h2>prompt</h2>
+		<pre>
+			<code>prompt('Resistance is futile', 'Surrender');</code>
+		</pre>
+		<figure>
+			<img src="images/prompt.png" width="624" height="224" alt="prompt">
+		</figure>
+		<style>
+			#prompt pre {
+				margin: 48px 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="showModalDialog">
+		<h2>showModalDialog</h2>
+		<pre>
+			<code>window.showModalDialog('modal-dialog.html');</code>
+		</pre>
+		<p class="example">
+			<img src="images/safari.png" width="50" height="50" alt="Safari">
+			&nbsp;
+			<a href="http://samples.msdn.microsoft.com/workshop/samples/author/dhtml/refs/showModalDialog2.htm">Пример</a>
+		<p>
+		<figure class="deprecated">
+			<img src="images/deprecated.png" width="530" height="200" alt="deprecated">
+		</figure>
+		<style>
+			#showModalDialog pre {
+				margin: 48px 0;
+			}
+			#showModalDialog .example {
+				display: flex;
+			}
+			#showModalDialog .deprecated {
+				margin-top: -48px;
+				opacity: 0.7;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="future">
+		<h2 class="shout">Будущее <small>Но это не точно</small></h2>
+		<style>
+			#future small {
+				display: block;
+		    font-size: 50px;
+    		line-height: 150px;
+			}
+		</style>
+	</section>
+	
+	<section class="slide" id="dialog">
+		<h2>dialog</h2>
+		<pre>
+			<code>&lt;dialog <mark>open</mark> class="dialog"&gt;
+  &lt;p&gt;Resistance is futile&lt;/p&gt;
+&lt;/dialog&gt;</code>
+		</pre>
+		<figure>
+			<img src="images/dialog.png" width="240" height="160" alt="dialog">
+		</figure>
+		<style>
+			#dialog pre {
+				margin: 48px 0;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="dialog2">
+		<h2>dialog</h2>
+		<p class="note">Показать:</p>
+		<pre>
+			<code>document.querySelector('dialog').showModal();</code>
+		</pre>
+		<p class="note">Спрятать:</p>
+		<pre>
+			<code>document.querySelector('dialog').close();</code>
+		</pre>
+	</section>
+
+	<section class="slide" id="dialog3">
+		<h2>TODO Демо</h2>
+		
+	</section>
+
+	<section class="slide" id="dialog4">
+		<h2>dialog</h2>
+		<p>Спецификации:</p>
+		<p>
+			<a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">Живой стандарт WHATWG HTML</a>
+			<br/>
+			<a href="http://w3c.github.io/html/interactive-elements.html#the-dialog-element">Рабочий черновик HTML5.1</a>
+		</p>
+
+		<p>Поддержка:</p>
+		<p>
+			<img src="images/chrome.png" width="100" height="100" alt="Google Chrome">
+			<img src="images/opera.png" width="100" height="100" alt="Opera">
+		</p>
+		<style>
+			#dialog4 h2 + p {
+				margin-bottom: 0.5em;
+			}
+		</style>
+	</section>
+
+	
+
+
+	<section class="slide section">
+		<h2>2. Простое окно</h2>
+		<div class="window">
+			<div class="window--close"></div>
+		</div>
+	</section>
+
+	<section class="slide" id="cssmodal">
+		<h2>Кратко</h2>
+		<pre>
+			<code>&lt;div class="modal"&gt;
+  &lt;p&gt;Resistance is futile&lt;/p&gt;
+&lt;/div&gt;</code>
+		</pre>
+		<p class="note">CSS:</p>
+		<pre>
+			<code>.modal { display: none; }
+.modal<mark>.is-opened</mark> { display: block; }</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<p>a11y напоминание про правильное скрытие/отображение</p>
+
+		<ul>
+			<li>aria-hidden="true"</li>
+			<li>tabindex="-1"</li>
+			<li>class="<a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L130-L141">visuallyhidden</a>"</li>
+		</ul>
+	</section>
+
+	<section class="slide" id="cssmodal2">
+		<h2>Без JS</h2>
+		<pre>
+			<code>&lt;input type="checkbox" id="toggle"&gt;
+&lt;div class="modal"&gt; ... &lt;/div&gt;
+
+&lt;label for="toggle"&gt;Показать модальное окно&lt;/label&gt;</code>
+		</pre>
+		<p class="note">CSS:</p>
+		<pre>
+			<code>#toggle<mark>:checked</mark> ~ .modal { display: block; }</code>
+		</pre>
+	</section>
+
+	<section class="slide" id="cssmodal3">
+		<h2>TODO Демо</h2>
+		
+	</section>
+
+
+	<section class="slide">
+		<h2 class="shout">Анатомия</h2>
+	</section>
+
+	<section class="slide">
+		<img class="cover" src="images/anatomy.jpg" width="1024" height="640" alt="Модальное окно">
+	</section>
+
+	<section class="slide" id="overlay">
+		<h2>Оверлей</h2>
+		<style>
+			#overlay {
+				background-color: white;
+			}
+			#overlay::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, 0.7);
+			}
+			#overlay h2 {
+				position: relative;
+				color: white;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="overlay2">
+		<img class="cover" src="images/overlay.jpg" width="1024" height="640" alt="Facebook overlay">
+	</section>
+
+	<section class="slide" id="overlay3">
+		<img class="cover" src="images/overlay2.jpg" width="1024" height="640" alt="Twitter overlay">
+	</section>
+
+	<section class="slide" id="overlay3">
+		<h2>Оверлей</h2>
+		<pre>
+			<code>.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}</code>
+		</pre>
+	</section>
+
+	<section class="slide" id="overlay4">
+		<h2>Окно с оверлеем</h2>
+		<pre>
+			<code>&lt;div class="modal overlay"&gt;
+	&lt;div class="modal-content"&gt; ... &lt;/div&gt;
+&lt;/div&gt;</code>
+		</pre>
+		<pre>
+			<code>.modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}</code>
+		</pre>
+	</section>
+
+
+
+
+	<section class="slide section">
+		<h2>3. Удобное окно</h2>
+		<div class="window">
+			<div class="window--close"></div>
+			<div class="window--button"></div>
+			<div class="window--button window--button_right window--button_dark"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<p>TODO открытие</p>
+
+	</section>
+
+	<section class="slide">
+		<p>TODO закрытие</p>
+		<ul>
+			<li>Cancel button</li>
+			<li>Close button</li>
+			<li>Escape key</li>
+			<li>Click outside the window</li>
+		</ul>
+
+	</section>
+
+	<section class="slide">
+		<p>TODO Перехват фокуса</p>
+		
+	</section>
+
+	<section class="slide">
+		<h2>TODO inert</h2>
+
+	</section>
+
+	<section class="slide">
+		<h2>TODO focus-lock</h2>
+
+		<p><a href="https://github.com/theKashey/focus-lock">github.com/theKashey/focus-lock</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>TODO aria-hidden=true для остального контента</h2>
+
+	</section>
+
+
+
+
+	<section class="slide section">
+		<h2>4. Продвинутое окно</h2>
+		<div class="window window_shadow">
+			<div class="window--close"></div>
+			<div class="window--button"></div>
+			<div class="window--button window--button_right window--button_dark"></div>
+		</div>
+	</section>
+
+	<section class="slide" id="scroll">
+		<h2>Окно со скроллом</h2>
+		<pre>
+			<code>.modal {
+	 overflow: auto;
+}
+
+body {
+	overflow: hidden;
+}</code>
+		</pre>
+	</section>
+
+	<section class="slide" id="scroll2">
+		<h2>Окно со скроллом</h2>
+		<p>Мобильная версия</p>
+		<pre>
+			<code>body { position: fixed; }</code>
+		</pre>
+		<p class="note">JS</p>
+		<pre>
+			<code>const top = window.pageYOffset || documentElement.scrollTop;
+body.style.top = `-${top}px`;</code>
+		</pre>
+	</section>
+
+	<section class="slide" id="animations">
+		<h2>TODO Анимации появления</h2>
+
+	</section>
+
+	<section class="slide" id="animations">
+		<h2>TODO Анимации появления</h2>
+
+		<p><a href="https://tympanus.net/Development/ModalWindowEffects/">tympanus.net/Development/ModalWindowEffects/</a></p>
+
+	</section>
+
+	<section class="slide" id="animations">
+		<h2>TODO Demo круглое окно из кнопки</h2>
+
+	</section>
+	
+	<section class="slide" id="backdrop-animations">
+		<h2>TODO Анимации оверлея</h2>
+
+	</section>
+
+	<section class="slide" id="backdrop-filter">
+		<h2>TODO backdrop-filter картинка</h2>
+
+	</section>
+
+	<section class="slide" id="backdrop-filter2">
+		<h2>Экспериментальная технология</h2>
+		<pre>
+			<code><mark>backdrop-filter</mark>: blur(3px);</code>
+		</pre>
+		<p>Поддержка:</p>
+		<p class="note">
+			<img src="images/safari.png" width="100" height="100" alt="Safari">
+			&nbsp;
+			<span>-webkit</span>
+		</p>
+		<style>
+			#backdrop-filter2 pre {
+				margin: 28px 0;
+			}
+			#backdrop-filter2 .note {
+				display: flex;
+				align-items: center;
+			}
+		</style>
+	</section>
+
+
+	<section class="slide">
+		<h2 class="shout">Итого</h2>
+	</section>
+
+
+	<section class="slide" id="thanks">
+		<h2>Спасибо!</h2>
+		<p class="social social_twi"> <a href="https://twitter.com/asktwi">asktwi</a></p>
+		<p class="social social_fb"> <a href="https://www.facebook.com/anna.selezniova">anna.selezniova</a></p>
+		<p class="social social_web"> <a href="http://askd.rocks/">askd.rocks</a></p>
+		<br>
+		<p class="note">
+			Презентация создана с помощью
+			<img src="images/logo.svg" width="25" height="25" alt="shwr.me">
+			<a href="https://github.com/shower/shower">Shower</a>
+	  </p>
+
+		<style>
+			#thanks .social {
+			  position: relative;
+				margin-right: 360px;
+			  padding-left: 72px;
+			}
+			#thanks .social:before {
+			  content: '';
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  width: 48px;
+			  height: 48px;
+			  background-size: 48px 48px;
+			  background-repeat: no-repeat;
+			}
+			#thanks .social_fb:before {
+			  background-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M18%2032v-14h6l1-6h-7v-3c0-2%201.002-3%203-3h3v-6h-5c-5%200-7%203-7%208v4h-6v6h6v14h6z%22%20fill%3D%22%233B5998%22/%3E%3C/svg%3E');
+			}
+			#thanks .social_twi:before {
+			  background-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M31.993%206.077c-1.177.523-2.441.876-3.77%201.033%201.355-.812%202.396-2.098%202.887-3.63-1.269.751-2.673%201.299-4.168%201.592-1.198-1.275-2.904-2.072-4.793-2.072-3.625%200-6.562%202.938-6.562%206.563%200%20.514.057%201.016.169%201.496-5.455-.274-10.291-2.887-13.529-6.858-.564.97-.888%202.097-.888%203.3%200%202.278%201.159%204.286%202.919%205.464-1.075-.035-2.087-.329-2.972-.821l-.001.082c0%203.181%202.262%205.834%205.265%206.437-.55.149-1.13.23-1.729.23-.424%200-.834-.041-1.234-.117.834%202.606%203.259%204.504%206.13%204.558-2.245%201.76-5.075%202.811-8.15%202.811-.53%200-1.053-.031-1.566-.092%202.904%201.86%206.354%202.947%2010.061%202.947%2012.072%200%2018.675-10.001%2018.675-18.675%200-.284-.008-.568-.02-.85%201.283-.925%202.395-2.08%203.276-3.398z%22%20fill%3D%22%2355ACEE%22/%3E%3C/svg%3E');
+			}
+			#thanks .social_web:before {
+			  background-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2078%2078%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M39%200c-21.539%200-39%2017.461-39%2039s17.461%2039%2039%2039%2039-17.461%2039-39-17.461-39-39-39zm1.221%2070.934c-.445.399-.907.483-1.217.483-.313%200-.78-.085-1.232-.491-5.489-4.938-9.529-11.251-11.828-18.24%208.567-2.189%2017.566-2.219%2026.146-.091-2.295%207.029-6.352%2013.379-11.869%2018.339zm-15.747-24.064c-.469-2.574-.724-5.205-.724-7.87s.255-5.296.723-7.87c4.827%201.231%209.776%201.849%2014.727%201.849%204.82%200%209.639-.587%2014.345-1.754.457%202.544.706%205.143.706%207.775s-.249%205.231-.706%207.775c-9.54-2.366-19.545-2.336-29.071.095zm13.306-39.804c.444-.399.907-.483%201.216-.483.313%200%20.78.086%201.232.491%205.513%204.959%209.566%2011.306%2011.86%2018.331-8.58%202.127-17.579%202.098-26.146-.091%202.3-6.992%206.344-13.309%2011.838-18.248zm21.538%2022.406c3.287-1.181%206.489-2.663%209.569-4.441%201.993%204.245%203.113%208.978%203.113%2013.969s-1.12%209.724-3.112%2013.969c-3.08-1.779-6.282-3.26-9.569-4.441.604-3.106.932-6.293.932-9.528-.001-3.235-.328-6.421-.933-9.528zm6.536-9.617c-2.59%201.494-5.275%202.759-8.029%203.782-1.917-5.907-4.934-11.373-8.866-16.099%206.879%202.183%2012.783%206.566%2016.895%2012.317zm-36.812-12.316c-3.901%204.689-6.899%2010.107-8.817%2015.961-2.732-1.037-5.396-2.305-7.963-3.807%204.106-5.671%209.965-9.992%2016.78-12.154zm-19.849%2017.311c3.061%201.793%206.244%203.292%209.513%204.491-.621%203.148-.956%206.379-.956%209.659%200%203.28.334%206.511.956%209.659-3.269%201.2-6.452%202.698-9.513%204.491-2.045-4.291-3.193-9.088-3.193-14.15s1.148-9.859%203.193-14.15zm3.069%2033.456c2.566-1.501%205.23-2.77%207.963-3.807%201.918%205.854%204.916%2011.273%208.817%2015.962-6.815-2.162-12.674-6.483-16.78-12.155zm36.697%2012.155c3.932-4.727%206.948-10.192%208.865-16.099%202.754%201.023%205.439%202.289%208.029%203.782-4.111%205.751-10.015%2010.134-16.894%2012.317z%22%20fill%3D%22%236988BE%22/%3E%3C/svg%3E');
+			}
+		</style>
+	</section>
+
+
+	<div class="progress"></div>
+
+	<script src="shower/shower.min.js"></script>
+
+</body>
+</html>
