@@ -29,7 +29,6 @@
 			right: 28px;
 			width: 56px;
 			height: 56px;
-			transform: rotate(45deg);
 		}
 		.window--close::before,
 		.window--close::after {
@@ -37,17 +36,16 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			background-color: #44709e;
-		}
-		.window--close::before {
-			width: 6px;
-			height: 100%;
-			margin: 0 25px;
-		}
-		.window--close::after {
 			width: 100%;
 			height: 6px;
 			margin: 25px 0;
+			background-color: #44709e;
+		}
+		.window--close::before {
+			transform: rotate(-45deg);
+		}
+		.window--close::after {
+			transform: rotate(45deg);
 		}
 		.window--button {
 			position: absolute;
@@ -63,6 +61,25 @@
 		}
 		.window--button_dark {
 			background-color: #44709e;
+		}
+		.bulb {
+			position: relative;
+			padding-left: 60px;
+		}
+		.bulb::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 60px;
+			height: 60px;
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			background-image: url(images/bulb.svg);
+			background-size: 60px 60px;
+		}
+		.bulb span {
+			color: #8bb02c;
 		}
 	</style>
 </head>
@@ -172,10 +189,6 @@
 
 	<section class="slide">
 		<img class="cover" src="images/annoying.jpg" width="1024" height="640" alt="Раздражающее окно">
-	</section>
-
-	<section class="slide">
-		<p>TODO Сайдбары на моб. это тоже окна</p>
 	</section>
 
 
@@ -361,13 +374,12 @@
 		</pre>
 	</section>
 
-	<section class="slide">
-		<p>TODO a11y напоминание про правильное скрытие/отображение</p>
-
+	<section class="slide" id="a11yhidden">
+		<h2 class="bulb"><span>A11y:</span> Как прятать элемент</h2>
 		<ul>
-			<li>aria-hidden="true"</li>
-			<li>tabindex="-1"</li>
-			<li>class="<a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L130-L141">visuallyhidden</a>"</li>
+			<li>Убрать из a11y-дерева: <code>aria-hidden="true"</code></li>
+			<li>Исключить из навигации с клавиатуры: <code>tabindex="-1"</code></li>
+			<li>Скрыть визуально: <code>class="<a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L130-L141">visuallyhidden</a>"</code></li>
 		</ul>
 	</section>
 
@@ -399,8 +411,128 @@
 		<img class="cover" src="images/anatomy.jpg" width="1024" height="640" alt="Модальное окно">
 	</section>
 
-	<section class="slide" id="buttons">
-		<h2>TODO UX-совет для заголовков кнопок</h2>
+	<section class="slide" id="uxtitles">
+		<h2 class="bulb"><span>UX:</span> Понятные заголовки</h2>
+		<div class="win">
+			<div class="win--close"></div>
+			<div class="win--title">Вы уверены?</div>
+			<div class="win--button">Удалить</div>
+			<div class="win--button win--button_right">Отменить</div>
+			<div class="cross next"></div>
+		</div>
+		<div class="win">
+			<div class="win--close"></div>
+			<div class="win--title">Удалить заказ?</div>
+			<div class="win--button">Да</div>
+			<div class="win--button win--button_right">Нет</div>
+			<div class="cross next"></div>
+		</div>
+		<div class="win next">
+			<div class="win--close"></div>
+			<div class="win--title">Удалить заказ?</div>
+			<div class="win--button">Удалить</div>
+			<div class="win--button win--button_right">Отменить</div>
+			<div class="ok"></div>
+		</div>
+		<style>
+			#uxtitles .win {
+				position: relative;
+				float: left;
+				margin: 0 40px 40px 0;
+				width: 368px;
+				height: 148px;
+				border: 4px solid #777;
+			}
+			#uxtitles .cross {
+				position: absolute;
+				top: -4px;
+				right: -4px;
+				bottom: -4px;
+				left: -4px;
+			}
+			#uxtitles .cross::before,
+			#uxtitles .cross::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 400px;
+				margin: -2px 0 0 -200px;
+				height: 4px;
+				background-color: #c00;
+			}
+			#uxtitles .cross::before {
+				transform: rotate(-30deg);
+			}
+			#uxtitles .cross::after {
+				transform: rotate(30deg);
+			}
+			#uxtitles .win--close {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				width: 20px;
+				height: 20px;
+			}
+			#uxtitles .win--close::before,
+			#uxtitles .win--close::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 4px;
+				margin: 8px 0;
+				background-color: #777;
+			}
+			#uxtitles .win--close::before {
+				transform: rotate(-45deg);
+			}
+			#uxtitles .win--close::after {
+				transform: rotate(45deg);
+			}
+			#uxtitles .win--title {
+				padding: 10px;
+				line-height: 2;
+			}
+			#uxtitles .win--button {
+				position: absolute;
+				left: 10px;
+				bottom: 10px;
+				width: 140px;
+				height: 48px;
+				line-height: 2;
+				text-align: center;
+				color: white;
+				background-color: #777;
+			}
+			#uxtitles .win--button_right {
+				left: auto;
+				right: 10px;
+			}
+			#uxtitles .ok {
+				position: absolute;
+				bottom: -4px;
+				right: -160px;
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				border: 4px solid #8bb02c;
+				transform: rotate(45deg);
+			}
+			#uxtitles .ok::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				margin: 24px 0 0 36px;
+				width: 30px;
+				height: 60px;
+				border-style: solid;
+				border-width: 0 4px 4px 0;
+				border-color: #8bb02c;
+			}
+		</style>
 	</section>
 
 	<section class="slide" id="overlay">
@@ -450,7 +582,7 @@
 	<section class="slide" id="overlay4">
 		<h2>Окно с оверлеем</h2>
 		<pre>
-			<code>&lt;div class="modal overlay"&gt;
+			<code>&lt;div class="modal <mark>overlay</mark>"&gt;
 	&lt;div class="modal-content"&gt; ... &lt;/div&gt;
 &lt;/div&gt;</code>
 		</pre>
@@ -463,8 +595,34 @@
 		</pre>
 	</section>
 
-	<section class="slide">
-		<h2>TODO UX-совет одновременно должно быть только одно окно</h2>
+	<section class="slide" id="a11yone">
+		<h2 class="bulb"><span>UX:</span> Только одно окно</h2>
+		<figure>
+			<img src="images/multiple-modals.png" alt="Несколько модальных окон" width="414" height="320">
+		</figure>
+		<style>
+			#a11yone figure {
+				position: relative;
+				float: left;
+			}
+			#a11yone figure::before,
+			#a11yone figure::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 520px;
+				margin: -2px 0 0 -260px;
+				height: 4px;
+				background-color: #c00;
+			}
+			#a11yone figure::before {
+				transform: rotate(-45deg);
+			}
+			#a11yone figure::after {
+				transform: rotate(45deg);
+			}
+		</style>
 	</section>
 
 
@@ -565,16 +723,22 @@ body.style.top = `-${top}px`;</code>
 
 	</section>
 
-	<section class="slide" id="animations">
+	<section class="slide" id="animations2">
 		<h2>TODO Анимации появления</h2>
 
-		<p><a href="https://tympanus.net/Development/ModalWindowEffects/">tympanus.net/Development/ModalWindowEffects/</a></p>
+		<p><a href="https://tympanus.net/Development/ModalWindowEffects/">tympanus.net/Development/ModalWindowEffects</a></p>
 
 	</section>
 
-	<section class="slide" id="animations">
+	<section class="slide" id="animations3">
 		<h2>TODO Demo круглое окно из кнопки</h2>
 
+	</section>
+	
+	<section class="slide" id="animations3">
+		<h2>TODO сайдбар тоже м.б. модальным окном</h2>
+
+		<p><a href="https://tympanus.net/Development/SidebarTransitions/">tympanus.net/Development/SidebarTransitions</a></p>
 	</section>
 
 	<section class="slide" id="backdrop-filter">
