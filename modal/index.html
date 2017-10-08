@@ -337,14 +337,14 @@
 			<br/>
 			<a href="http://w3c.github.io/html/interactive-elements.html#the-dialog-element">Рабочий черновик HTML5.1</a>
 		</p>
-
 		<p>Поддержка:</p>
 		<p>
-			<img src="images/chrome.png" width="100" height="100" alt="Google Chrome">
-			<img src="images/opera.png" width="100" height="100" alt="Opera">
+			<img src="images/chrome.png" width="50" height="50" alt="Google Chrome">
+			<img src="images/opera.png" width="50" height="50" alt="Opera">
 		</p>
+		<p>Полифил: <a href="https://github.com/GoogleChrome/dialog-polyfill">github.com/GoogleChrome/dialog-polyfill</a></p>
 		<style>
-			#dialog4 h2 + p {
+			#dialog4 p {
 				margin-bottom: 0.5em;
 			}
 		</style>
@@ -381,6 +381,20 @@
 			<li>Исключить из навигации с клавиатуры: <code>tabindex="-1"</code></li>
 			<li>Скрыть визуально: <code>class="<a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L130-L141">visuallyhidden</a>"</code></li>
 		</ul>
+	</section>
+
+	<section class="slide" id="a11yhidden">
+		<h2 class="bulb"><span>A11y:</span> Атрибуты</h2>
+		<pre>
+			<code>&lt;div class="modal" <mark>role="dialog"</mark>
+	aria-labelledby="modalTitle"
+	aria-describedby="modalDesc"
+&gt;
+  &lt;h2 id="modalTitle"&gt;Заголовок окна&lt;/h2&gt;
+  &lt;p id="modalDesc"&gt;Описание окна&lt;&gt;
+&lt;/div&gt;
+			</code>
+		</pre>
 	</section>
 
 	<section class="slide" id="cssmodal2">
@@ -499,7 +513,7 @@
 				position: absolute;
 				left: 10px;
 				bottom: 10px;
-				width: 140px;
+				width: 160px;
 				height: 48px;
 				line-height: 2;
 				text-align: center;
@@ -638,44 +652,78 @@
 	</section>
 
 	<section class="slide">
-		<p>TODO открытие</p>
-
-	</section>
-
-	<section class="slide">
-		<p>TODO закрытие</p>
+		<h2>Открытие окна</h2>
 		<ul>
-			<li>Cancel button</li>
-			<li>Close button</li>
-			<li>Escape key</li>
-			<li>Click outside the window</li>
+			<li>Происходит, когда пользователь совершает какое-то действие</li>
+			<li>Не является неожиданностью для пользователя</li>
 		</ul>
-
 	</section>
 
 	<section class="slide">
-		<p>TODO Перехват фокуса</p>
-		
+		<h2>Закрытие окна</h2>
+		<ul>
+			<li>Кнопка <mark>Отменить</mark></li>
+			<li>Кнопка <mark>Закрыть</mark> (<mark>✕</mark>)</li>
+			<li>Клавиша Escape</li>
+			<li>Клик по оверлею (за пределами окна)</li>
+		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>TODO inert</h2>
-
-		<a href="https://github.com/GoogleChrome/inert-polyfill">github.com/GoogleChrome/inert-polyfill</a>
-
+		<h2 class="bulb"><span>A11y:</span> ✕ – это кнопка</h2>
+		<pre>
+			<code>&lt;button&gt;✕&lt;/button&gt;</code>
+		</pre>
+		<p class="note">или</p>
+		<pre>
+			<code>&lt;span role="button" tabindex="0"&gt;✕&lt;/span&gt;</code>
+		</pre>
 	</section>
 
 	<section class="slide">
-		<h2>TODO focus-lock</h2>
+		<h2 class="bulb"><span>UX:</span> Отменяемый Escape</h2>
+		<pre>
+			<code>function handleKeyDown (event) {
+	const keyCode = event.keyCode || event.which;
+	if (keyCode === 27) {
+		<span class="comment">// закрыть модальное окно</span>
+		event.<mark>preventDefault()</mark>;
+	}
+}
+document.addEventListener('keydown', handleKeyDown);
+			</code>
+		</pre>
+	</section>
+	
+	<section class="slide">
+		<h2>Перехват фокуса</h2>
+		<p>Когда открыто модальное окно, навигация с клавиатуры не должна выходить за его пределы</p>
+	</section>
 
+	<section class="slide">
+		<h2>Способ 1: inert</h2>
+		<pre>
+			<code>&lt;div <mark>inert</mark>&gt;
+	&lt;input type="text" placeholder="Недоступное поле" /&gt;
+	&lt;button>Некликабельная кнопка&lt;/button&gt;
+&lt;/div&gt;
+			</code>
+		</pre>
+		<p>Полифил: <a href="https://github.com/GoogleChrome/inert-polyfill">github.com/GoogleChrome/inert-polyfill</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>Способ 2: focus-lock</h2>
 		<p><a href="https://github.com/theKashey/focus-lock">github.com/theKashey/focus-lock</a></p>
+		<pre>
+			<code>setFocus(topNode, lastNode)</code>
+		</pre>
+		<p class="note">ReactJS:</p>
+		<pre>
+			<code>&lt;FocusLock&gt;&lt;Modal /&gt;&lt;/FocusLock&gt;</code>
+		</pre>
+		<p>Подробнее в <a href="https://habrahabr.ru/post/338130/">статье</a></p>
 	</section>
-
-	<section class="slide">
-		<h2>TODO aria-hidden=true для остального контента</h2>
-
-	</section>
-
 
 
 
@@ -715,12 +763,34 @@ body.style.top = `-${top}px`;</code>
 	</section>
 
 	<section class="slide" id="scroll3">
-		<h2>TODO UX-совет, что возможно скролл не нужен</h2>
+		<h2 class="bulb"><span>UX:</span> Скролла быть не должно</h2>
+		<p>Если для содержимого требуется скролл, то скорее всего лучше использовать не модальное окно, а отдельную страницу</p>
 	</section>
 
 	<section class="slide" id="animations">
-		<h2>TODO Анимации появления</h2>
-
+		<h2>Анимации</h2>
+		<img class="cover" src="images/jump.jpg" alt="Анимация" width="1024" height="640">
+		<span class="a">А</span>
+		<span class="b">Б</span>
+		<style>
+		#animations span {
+			position: absolute;
+			bottom: 110px;
+			display: inline-block;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			background-color: #8bb02c;
+			color: white;
+			text-align: center;
+		}
+			#animations .a {
+				left: 215px;
+			}
+			#animations .b {
+				right: 200px;
+			}
+		</style>
 	</section>
 
 	<section class="slide" id="animations2">
@@ -752,7 +822,7 @@ body.style.top = `-${top}px`;</code>
 		</pre>
 		<p>Поддержка:</p>
 		<p class="note">
-			<img src="images/safari.png" width="100" height="100" alt="Safari">
+			<img src="images/safari.png" width="50" height="50" alt="Safari">
 			&nbsp;
 			<span>-webkit</span>
 		</p>
