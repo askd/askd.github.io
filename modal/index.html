@@ -212,6 +212,10 @@
 		<h2 class="shout">История</h2>
 	</section>
 
+	<section class="slide">
+		<img class="cover" src="images/windows.gif" width="356" height="344" alt="Windows">
+	</section>
+
 	<section class="slide" id="alert">
 		<h2>alert</h2>
 		<pre>
@@ -794,21 +798,205 @@ body.style.top = `-${top}px`;</code>
 	</section>
 
 	<section class="slide" id="animations2">
-		<h2>TODO Анимации появления</h2>
-
+		<h2>Анимации появления</h2>
+		<div class="window">
+			<div class="window--close"></div>
+		</div>
 		<p><a href="https://tympanus.net/Development/ModalWindowEffects/">tympanus.net/Development/ModalWindowEffects</a></p>
-
+		<style>
+			#animations2 .window {
+				margin: 56px 0; 
+				height: 258px;
+				background-color: #8bb02c;
+				border-color: #8bb02c;
+				opacity: 0;
+				transform: scale(0.7);
+				animation-name: fadeinscale;
+				animation-duration: 15s;
+				animation-iteration-count: infinite;
+			}
+			#animations2 .window--close::before,
+			#animations2 .window--close::after {
+				background-color: white;
+			}
+			@keyframes fadeinscale {
+				0% {
+					opacity: 0;
+					transform: scale(0.7);
+				}
+				5% {
+					opacity: 1;
+					transform: scale(1);
+				}
+				12.5% {
+					opacity: 1;
+					transform: scale(1);
+				}
+				17.5% {
+					opacity: 0;
+					transform: scale(0.7);
+				}
+				25% {
+					opacity: 0;
+					transform: translateY(-20%);
+				}
+				30% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				37.5% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				42.5% {
+					opacity: 0;
+					transform: translateY(-20%);
+				}
+				50% {
+					opacity: 0;
+					transform: translateY(20%);
+				}
+				55% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				62.5% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				67.5% {
+					opacity: 0;
+					transform: translateY(20%);
+				}
+				75% {
+					opacity: 0;
+					transform: scale(2);
+				}
+				80% {
+					opacity: 1;
+					transform: scale(1);
+				}
+				87.5% {
+					opacity: 1;
+					transform: scale(1);
+				}
+				92.5% {
+					opacity: 0;
+					transform: scale(2);
+				}
+			}
+		</style>
 	</section>
 
 	<section class="slide" id="animations3">
-		<h2>TODO Demo круглое окно из кнопки</h2>
+		<h2>TODO Demo окно из кнопки</h2>
 
 	</section>
 	
 	<section class="slide" id="animations3">
-		<h2>TODO сайдбар тоже м.б. модальным окном</h2>
-
+		<h2>Сайдбар – тоже модальное окно</h2>
+		<div class="sidebar">
+			<div class="sidebar--wrapper">
+				<div class="sidebar--content">
+					<div class="sidebar--left">
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="sidebar--right">
+						<div class="sidebar--icon">
+							<span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<p><a href="https://tympanus.net/Development/SidebarTransitions/">tympanus.net/Development/SidebarTransitions</a></p>
+		<style>
+			#animations3 .sidebar {
+				position: relative;
+				width: 330px;
+				height: 300px;
+				margin-bottom: 28px;
+    		background-position: -205px -45px;
+				background-image: url(images/iphone.png);
+				background-size: 740px 740px;
+				background-repeat: no-repeat;
+				border-bottom: 1px solid #ccc;
+			}
+			#animations3 .sidebar--wrapper {
+				position: absolute;
+				top: 75px;
+		    left: 25px;
+		    width: 280px;
+		    height: 225px;
+		    overflow: hidden;
+			}
+			#animations3 .sidebar--content {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 480px;
+				height: 100%;
+				transform: translateX(-200px);
+				animation-name: slideinout;
+				animation-duration: 8s;
+				animation-iteration-count: infinite;
+			}
+			#animations3 .sidebar--left {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 200px;
+				height: 100%;
+				background-color: #8bb02c;
+			}
+			#animations3 .sidebar--right {
+				position: absolute;
+				top: 0;
+				left: 200px;
+				width: 280px;
+				height: 100%;
+				padding: 20px;
+			}
+			#animations3 .sidebar--icon {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 48px;
+				height: 48px;
+			}
+			#animations3 .sidebar--icon::before,
+			#animations3 .sidebar--icon::after,
+			#animations3 .sidebar--icon span {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 8px;
+				width: 32px;
+				height: 4px;
+				background-color: #000;
+			}
+			#animations3 .sidebar--icon::before {
+				margin-top: -10px;
+			}
+			#animations3 .sidebar--icon::after {
+				margin-top: 10px;
+			}
+			#animations3 li {
+				height: 48px;
+				border-top: 1px solid rgba(0, 0, 0, 0.2);
+			}
+			@keyframes slideinout {
+				0% { transform: translateX(-200px); }
+				10% { transform: translateX(0); }
+				50% { transform: translateX(0); }
+				60% { transform: translateX(-200px); }
+			}
+		</style>
 	</section>
 
 	<section class="slide" id="backdrop-filter">
