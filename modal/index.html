@@ -186,7 +186,7 @@
 	</section>
 	
 	<section class="slide">
-		<h2></h2>
+		<h2>Модальное окно</h2>
 		<figure>
 			<blockquote>
 				<p>В графическом интерфейсе пользователя модальным называется окно, которое блокирует работу пользователя с родительским приложением до тех пор, пока пользователь это окно не закроет.</p>
@@ -408,11 +408,11 @@
 
 	<section class="slide" id="a11yhidden">
 		<h2 class="bulb"><span>A11y:</span> Как прятать элемент</h2>
-		<ul>
+		<ol>
 			<li>Убрать из a11y-дерева: <code>aria-hidden="true"</code></li>
 			<li>Исключить из навигации с клавиатуры: <code>tabindex="-1"</code></li>
 			<li>Скрыть визуально: <code>class="<a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L130-L141">visuallyhidden</a>"</code></li>
-		</ul>
+		</ol>
 	</section>
 
 	<section class="slide" id="a11yhidden">
@@ -423,7 +423,7 @@
 	aria-describedby="modalDesc"
 &gt;
   &lt;h2 id="modalTitle"&gt;Заголовок окна&lt;/h2&gt;
-  &lt;p id="modalDesc"&gt;Описание окна&lt;&gt;
+  &lt;p id="modalDesc"&gt;Описание окна&lt;/p&gt;
 &lt;/div&gt;
 			</code>
 		</pre>
@@ -433,7 +433,10 @@
 		<h2>Без JS</h2>
 		<pre>
 			<code>&lt;input type="checkbox" id="toggle"&gt;
-&lt;div class="modal"&gt; ... &lt;/div&gt;
+&lt;div class="modal"&gt;
+	...
+	&lt;label for="toggle"&gt;✕&lt;/label&gt;
+&lt;/div&gt;
 
 &lt;label for="toggle"&gt;Показать модальное окно&lt;/label&gt;</code>
 		</pre>
@@ -467,22 +470,22 @@
 		<div class="win">
 			<div class="win--close"></div>
 			<div class="win--title">Вы уверены?</div>
-			<div class="win--button">Удалить</div>
-			<div class="win--button win--button_right">Отменить</div>
+			<div class="win--button">Да</div>
+			<div class="win--button win--button_right">Нет</div>
 			<div class="cross next"></div>
 		</div>
 		<div class="win">
 			<div class="win--close"></div>
 			<div class="win--title">Удалить заказ?</div>
-			<div class="win--button">Да</div>
-			<div class="win--button win--button_right">Нет</div>
+			<div class="win--button">Подтвердить</div>
+			<div class="win--button win--button_right">Отменить</div>
 			<div class="cross next"></div>
 		</div>
 		<div class="win next">
 			<div class="win--close"></div>
 			<div class="win--title">Удалить заказ?</div>
 			<div class="win--button">Удалить</div>
-			<div class="win--button win--button_right">Отменить</div>
+			<div class="win--button win--button_right">Оставить</div>
 			<div class="ok"></div>
 		</div>
 		<style>
