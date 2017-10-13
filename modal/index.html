@@ -188,6 +188,62 @@
 		</style>
 	</section>
 	
+	<section class="slide" id="cube">
+		<div class="scene">
+			<div class="cube">
+				<div class="side back">BACK</div>
+				<div class="side top">TOP</div>
+				<div class="side bottom">BOTTOM</div>
+				<div class="side front">FRONT</div>
+			</div>
+		</div>
+		<style>
+			#cube .scene {
+				width: 300px;
+				height: 300px;
+				margin: 75px auto 0;
+				perspective: 1200px;		
+			}
+			#cube .cube {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				transform-style: preserve-3d;
+				animation: example 10s linear infinite;
+			}
+			#cube .side {
+				position: absolute;
+				width: 300px;
+				height: 300px;
+				box-sizing: border-box;
+				border: 1px solid #000;
+				background-color: #8bb02c;
+				opacity: 0.7;
+				padding: 120px 0;
+				font-size: 50px;
+				line-height: 1;
+				color: #fff;
+				text-transform: uppercase;
+				text-align: center;
+			}
+			#cube .back {
+				transform: translateZ(-150px) rotateX(180deg);
+			}
+			#cube .top {
+				transform: translateY(-150px) rotateX(90deg);
+			}
+			#cube .bottom {
+				transform: translateY(150px) rotateX(270deg);
+			}
+			#cube .front {
+				transform: translateZ(150px);
+			}
+			@keyframes example {
+				100% { transform: rotateX(360deg); }
+			}
+		</style>
+	</section>
+
 	<section class="slide">
 		<h2>Модальное окно</h2>
 		<figure>
@@ -705,8 +761,8 @@
 	<section class="slide">
 		<h2>Закрытие окна</h2>
 		<ul>
-			<li>Кнопка <mark>Отменить</mark></li>
 			<li>Кнопка <mark>Закрыть</mark> (<mark>✕</mark>)</li>
+			<li>Кнопка <mark>Отменить</mark></li>
 			<li>Клавиша Escape</li>
 			<li>Клик по оверлею (за пределами окна)</li>
 		</ul>
