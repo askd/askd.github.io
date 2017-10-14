@@ -191,10 +191,12 @@
 	<section class="slide" id="cube">
 		<div class="scene">
 			<div class="cube">
-				<div class="side back">BACK</div>
-				<div class="side top">TOP</div>
-				<div class="side bottom">BOTTOM</div>
-				<div class="side front">FRONT</div>
+				<div class="side back"></div>
+				<div class="side top"></div>
+				<div class="side bottom"></div>
+				<div class="side front"></div>
+				<div class="side left"></div>
+				<div class="side right"></div>
 			</div>
 		</div>
 		<style>
@@ -219,13 +221,7 @@
 				border: 1px solid #000;
 				background-color: #8bb02c;
 				opacity: 0.7;
-				padding: 120px 0;
-				font-size: 50px;
-				line-height: 1;
-				color: #fff;
-				text-transform: uppercase;
-				text-align: center;
-			}
+				}
 			#cube .back {
 				transform: translateZ(-150px) rotateX(180deg);
 			}
@@ -238,8 +234,14 @@
 			#cube .front {
 				transform: translateZ(150px);
 			}
+			#cube .left {
+				transform: translateX(-150px) rotateY(90deg);
+			}
+			#cube .right {
+				transform: translateX(150px) rotateY(90deg);
+			}
 			@keyframes example {
-				100% { transform: rotateX(360deg); }
+				100% { transform: rotateX(360deg) rotateY(360deg); }
 			}
 		</style>
 	</section>
