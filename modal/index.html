@@ -246,6 +246,17 @@
 		</style>
 	</section>
 
+	<section class="slide" id="slides">
+		<h2>Презентация</h2>
+		<p><a href="http://askd.github.io/modal/">askd.github.io/modal</a></p>
+		<style>
+			#slides p {
+				margin: 64px 0;
+				font-size: 36px;
+			}
+		</style>
+	</section>
+
 	<section class="slide">
 		<h2>Модальное окно</h2>
 		<figure>
@@ -269,6 +280,15 @@
 		<img class="cover" src="images/annoying.jpg" width="1024" height="640" alt="Раздражающее окно">
 	</section>
 
+	<section class="slide">
+		<h2>Это работает</h2>
+		<ul>
+			<li>ConversionXL <strong>на 30%</strong> больше подписчиков</li>
+			<li>WP Beginner <strong>в 6 раз</strong> больше регистраций</li>
+			<li>Backlinko <strong>на 3%</strong> больше конверсия</li>
+		</ul>
+		<p class="note">И пользователи не жаловались</p>
+	</section>
 
 	<section class="slide">
 		<h2>План</h2>
@@ -491,7 +511,7 @@
 	</section>
 
 	<section class="slide" id="cssmodal2">
-		<h2>Без JS</h2>
+		<h2>Без JS (:checked)</h2>
 		<pre>
 			<code>&lt;input type="checkbox" id="toggle"&gt;
 &lt;div class="modal"&gt;
@@ -504,7 +524,7 @@
 	</section>
 
 	<section class="slide" id="cssmodal3">
-		<h2>Без JS</h2>
+		<h2>Без JS (:checked)</h2>
 		<p class="note">CSS:</p>
 		<pre>
 			<code>#toggle<mark>:checked</mark> ~ .modal { display: block; }</code>
@@ -512,6 +532,32 @@
 		<p><span class="codepen">Пример:</span> <a href="https://codepen.io/askd/pen/QqrPdo">codepen.io/askd/pen/QqrPdo</a></p>
 		<style>
 			#cssmodal3 pre {
+				margin: 0 0 96px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="cssmodal4">
+		<h2>Без JS (:target)</h2>
+		<pre>
+			<code>&lt;div class="modal" id="modal"&gt;
+	...
+	&lt;a href="#"&gt;✕&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;a href="#modal"&gt;Показать модальное окно&lt;/a&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide" id="cssmodal5">
+		<h2>Без JS (:target)</h2>
+		<p class="note">CSS:</p>
+		<pre>
+			<code>#modal<mark>:target</mark> { display: block; }</code>
+		</pre>
+		<p><span class="codepen">Пример:</span> <a href="https://codepen.io/askd/pen/PJyoLZ">codepen.io/askd/pen/PJyoLZ</a></p>
+		<style>
+			#cssmodal5 pre {
 				margin: 0 0 96px;
 			}
 		</style>
@@ -1283,6 +1329,15 @@ body.style.top = `-${top}px`;</code>
 		<h2 class="shout">Итого</h2>
 	</section>
 
+	<section class="slide">
+		<h2>Хорошее модальное окно</h2>
+		<ul>
+			<li>Предсказуемое открытие</li>
+			<li>Несколько способов закрытия</li>
+			<li>Подходящий контент</li>
+			<li>Правильная реализация</li>
+		</ul>
+	</section>
 
 	<section class="slide" id="thanks">
 		<h2>Спасибо!</h2>
