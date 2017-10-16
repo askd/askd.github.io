@@ -246,17 +246,6 @@
 		</style>
 	</section>
 
-	<section class="slide" id="slides">
-		<h2>Презентация</h2>
-		<p><a href="http://askd.github.io/modal/">askd.github.io/modal</a></p>
-		<style>
-			#slides p {
-				margin: 64px 0;
-				font-size: 36px;
-			}
-		</style>
-	</section>
-
 	<section class="slide">
 		<h2>Модальное окно</h2>
 		<figure>
@@ -1314,7 +1303,18 @@ body.style.top = `-${top}px`;</code>
 	<section class="slide" id="portal">
 		<h2>React Portal</h2>
 		<pre>
-			<code>ReactDOM.createPortal(child, container);</code>
+			<code>&lt;div id="app-root"&gt;&lt;/div&gt;</code>
+		</pre>
+		<p class="note">CSS:</p>
+		<pre>
+			<code>#app-root { overflow: hidden; }</code>
+		</pre>
+	</section>
+
+	<section class="slide" id="portal2">
+		<h2>React Portal</h2>
+		<pre>
+			<code>ReactDOM.createPortal(modal, modalRoot);</code>
 		</pre>
 		<p><span class="codepen">Пример:</span> <a href="https://codepen.io/askd/pen/WZJqMz">codepen.io/askd/pen/WZJqMz</a></p>
 		<style>
@@ -1345,11 +1345,7 @@ body.style.top = `-${top}px`;</code>
 		<p class="social social_fb"> <a href="https://www.facebook.com/anna.selezniova">anna.selezniova</a></p>
 		<p class="social social_web"> <a href="http://askd.rocks/">askd.rocks</a></p>
 		<br>
-		<p class="note">
-			Презентация создана с помощью
-			<img src="images/logo.svg" width="25" height="25" alt="shwr.me">
-			<a href="https://github.com/shower/shower">Shower</a>
-	  </p>
+		<p>Презентация: <a href="http://askd.rocks/pres/modal/">askd.rocks/pres/modal</a></p>
 
 		<style>
 			#thanks .social {
