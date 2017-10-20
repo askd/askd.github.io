@@ -248,6 +248,16 @@
 	</section>
 
 	<section class="slide">
+		<h2>Элементы интерфейса</h2>
+		<ul>
+			<li>сайдбары</li>
+			<li>попапы</li>
+			<li>тултипы</li>
+			<li><mark>модальные окна</mark></li>
+		</ul>
+	</section>
+
+	<section class="slide">
 		<h2>Модальное окно</h2>
 		<figure>
 			<blockquote>
@@ -300,8 +310,14 @@
 		<h2 class="shout">История</h2>
 	</section>
 
-	<section class="slide">
-		<img class="cover" src="images/windows.gif" width="356" height="344" alt="Windows">
+	<section class="slide" id="windows">
+		<!-- <img class="cover" src="images/windows.gif" width="356" height="344" alt="Windows"> -->
+		<style>
+			#windows:target {
+				background-image: url(images/windows.gif);
+    		background-size: 356px 344px
+			}
+		</style>
 	</section>
 
 	<section class="slide" id="alert">
@@ -347,6 +363,12 @@
 				margin: 48px 0;
 			}
 		</style>
+	</section>
+
+	<section class="slide">
+		<h2>Рекомендация Google</h2>
+		<p>Не используйте alert / confirm / prompt</p>
+		<p><a href="https://developers.google.com/web/updates/2017/03/dialogs-policy">developers.google.com/web/updates/2017/03/dialogs-policy</a></p>
 	</section>
 
 	<section class="slide" id="showModalDialog">
@@ -551,6 +573,11 @@
 				margin: 0 0 96px;
 			}
 		</style>
+	</section>
+
+	<section class="slide">
+		<h2 class="bulb">Лучше с JS</h2>
+		<di><strong>Хорошее</strong> модальное окно невозможно сделать на чистом CSS</p>
 	</section>
 
 
@@ -818,6 +845,17 @@
 	</section>
 
 	<section class="slide">
+		<h2 class="bulb"><span>A11y:</span> ✕ – это «Закрыть»</h2>
+		<pre>
+			<code>&lt;button class="close"&gt;&lt;/button&gt;</code>
+		</pre>
+		<p class="note">или</p>
+		<pre>
+			<code>&lt;button aria-label="Закрыть"&gt;<mark>✕</mark>&lt;/button&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide">
 		<h2 class="bulb"><span>UX:</span> Отменяемый Escape</h2>
 		<pre>
 			<code>function handleKeyDown (event) {
@@ -841,7 +879,7 @@ document.addEventListener('keydown', handleKeyDown);
 		<h2>Способ 1: inert</h2>
 		<pre>
 			<code>&lt;div <mark>inert</mark>&gt;
-	&lt;input type="text" placeholder="Недоступное поле" /&gt;
+	&lt;input type="text" placeholder="Недоступное поле"&gt;
 	&lt;button>Некликабельная кнопка&lt;/button&gt;
 &lt;/div&gt;
 			</code>
@@ -1170,7 +1208,7 @@ body.style.top = `-${top}px`;</code>
 	</section>
 	
 	<section class="slide" id="animations4">
-		<h2>Сайдбар – тоже модальное окно</h2>
+		<h2>Сайдбар – модальное окно</h2>
 		<div class="sidebar">
 			<div class="sidebar--wrapper">
 				<div class="sidebar--content">
@@ -1315,12 +1353,17 @@ body.style.top = `-${top}px`;</code>
 	<section class="slide" id="portal2">
 		<h2>React Portal</h2>
 		<pre>
+			<code>&lt;div id="app-root"&gt;&lt;/div&gt;
+&lt;div id="modal-root"&gt;&lt;/div&gt;</code>
+		</pre>
+		<p class="note">JS:</p>
+		<pre>
 			<code>ReactDOM.createPortal(modal, modalRoot);</code>
 		</pre>
 		<p><span class="codepen">Пример:</span> <a href="https://codepen.io/askd/pen/WZJqMz">codepen.io/askd/pen/WZJqMz</a></p>
 		<style>
-			#portal pre {
-				margin: 0 0 96px;
+			#portal2 p {
+				margin-top: 48px;
 			}
 		</style>
 	</section>
