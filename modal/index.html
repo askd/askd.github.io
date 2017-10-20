@@ -503,12 +503,34 @@
 		<h2 class="bulb"><span>A11y:</span> Как прятать элемент</h2>
 		<ol>
 			<li>Убрать из a11y-дерева: <code>aria-hidden="true"</code></li>
-			<li>Исключить из навигации с клавиатуры: <code>tabindex="-1"</code></li>
+			<li>Исключить из порядка навигации с клавиатуры: <code>tabindex="-1"</code></li>
 			<li>Скрыть визуально: <code>class="<a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L130-L141">visuallyhidden</a>"</code></li>
 		</ol>
 	</section>
 
-	<section class="slide" id="a11yhidden">
+	<section class="slide" id="visuallyhidden">
+		<pre>
+			<code>.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}</code>
+		</pre>
+		<style>
+			#visuallyhidden code {
+				font-size: 20px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="a11yattr">
 		<h2 class="bulb"><span>A11y:</span> Атрибуты</h2>
 		<pre>
 			<code>&lt;div class="modal" <mark>role="dialog"</mark>
