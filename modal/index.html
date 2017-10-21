@@ -737,21 +737,12 @@
 
 	<section class="slide" id="overlay">
 		<h2>Оверлей</h2>
+		<img class="cover next" src="images/paranja.jpg" width="1024" height="640" alt="Paranja">
 		<style>
 			#overlay {
-				background-color: white;
-			}
-			#overlay::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				background-color: rgba(0, 0, 0, 0.7);
+				background-color: #484848;
 			}
 			#overlay h2 {
-				position: relative;
 				color: white;
 			}
 		</style>
@@ -869,11 +860,11 @@
 	<section class="slide">
 		<h2 class="bulb"><span>A11y:</span> ✕ – это «Закрыть»</h2>
 		<pre>
-			<code>&lt;button class="close"&gt;&lt;/button&gt;</code>
+			<code>&lt;button aria-label="Закрыть"&gt;<mark>✕</mark>&lt;/button&gt;</code>
 		</pre>
 		<p class="note">или</p>
 		<pre>
-			<code>&lt;button aria-label="Закрыть"&gt;<mark>✕</mark>&lt;/button&gt;</code>
+			<code>&lt;button aria-label="Закрыть" class="close"&gt;&lt;/button&gt;</code>
 		</pre>
 	</section>
 
