@@ -266,7 +266,7 @@ a:hover {
 .speaker-photo::after {
   content: '';
   position: absolute;
-  top: -24px;
+  top: -21px;
   left: 50%;
   margin-left: -70px;
   width: 140px;
