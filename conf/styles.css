@@ -96,6 +96,10 @@ a:hover {
   font-size: var(--heading-h4);
 }
 
+.dateplace {
+
+}
+
 .button {
   display: block;
   margin-top: 8px;
@@ -108,36 +112,6 @@ a:hover {
   opacity: 1;
 }
 
-.info {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.info-title {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 25%;
-  height: 3em;
-  color: var(--color-light);
-  font-size: var(--heading-h2);
-  font-weight: 700;
-}
-
-.info-desc {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 75%;
-  margin: 0;
-}
-
-.info-link {
-  display: inline-block;
-  margin-top: 4px;
-  font-size: 0.8em;
-}
-
 .schedule {
   display: flex;
   flex-wrap: wrap;
@@ -146,18 +120,13 @@ a:hover {
 
 .schedule-time {
   width: 25%;
-  margin-top: 16px;
+  margin-top: 32px;
   font-weight: 700;
 }
 
-.schedule-title {
-  width: 25%;
-  font-size: var(--heading-h4);
-}
-
 .schedule-event {
-  width: 50%;
-  margin: 16px 0 0;
+  width: 75%;
+  margin: 32px 0 0;
 }
 
 .schedule-link {
@@ -230,4 +199,89 @@ a:hover {
   .schedule {
     margin-top: 16px;
   }
+}
+
+.talk {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.talk-info {
+  flex-grow: 1;
+}
+
+.talk-title {
+
+}
+
+.talk-title::before {
+  content: '\00ab';
+  margin-left: -9px;
+}
+
+.talk-title::after {
+  content: '\00bb';
+}
+
+.speaker-photo {
+  position: relative;
+  margin: 0.8em 0 0 0.8em;
+  width: 55px;
+  height: 55px;
+  transform-origin: 50% 50%;
+}
+
+.speaker-photo_1 {
+  transform: rotate(-35deg);
+}
+
+.speaker-photo_2 {
+  transform: rotate(15deg);
+}
+
+.speaker-photo_3 {
+  transform: rotate(-20deg);
+}
+
+.speaker-photo_4 {
+  transform: rotate(30deg);
+}
+
+.speaker-photo_5 {
+  transform: rotate(-30deg);
+}
+
+.speaker-photo_6 {
+  transform: rotate(10deg);
+}
+
+.speaker-photo_7 {
+  transform: rotate(-20deg);
+}
+
+.speaker-photo_8 {
+  transform: rotate(25deg);
+}
+
+.speaker-photo::after {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  margin-left: -70px;
+  width: 140px;
+  height: 140px;
+  background-image: url(img/astronaut.svg);
+  background-repeat: no-repeat;
+}
+
+.speaker-photo-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 28px;
+}
+
+.speaker-name {
+  font-size: 0.8em;
+  opacity: 0.5;
 }
