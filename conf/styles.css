@@ -168,7 +168,7 @@ a:hover {
 }
 
 .talk-title {
-
+  min-height: 42px;
 }
 
 .talk-title::before {
@@ -182,14 +182,12 @@ a:hover {
 
 .speaker-photo {
   margin: 0.8em 0 0 0.8em;
-  width: 55px;
-  height: 55px;
 }
 
 .speaker-photo-img {
-  width: 55px;
-  height: 55px;
-  border-radius: 28px;
+  width: 42px;
+  height: 42px;
+  border-radius: 21px;
 }
 
 .speaker-name {
@@ -228,7 +226,7 @@ a:hover {
   }
 
   .wrap {
-    max-width: 640px;
+    width: 640px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -258,7 +256,15 @@ a:hover {
   .speaker-photo {
     position: relative;
     margin: 0 0 0 0.8em;
+    width: 55px;
+    height: 55px;
     transform-origin: 50% 50%;
+  }
+
+  .speaker-photo-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 28px;
   }
 
   .speaker-photo_1 {
@@ -270,23 +276,23 @@ a:hover {
   }
 
   .speaker-photo_3 {
-    transform: rotate(-20deg);
+    transform: rotate(40deg);
   }
 
   .speaker-photo_4 {
-    transform: rotate(30deg);
+    transform: rotate(-15deg);
   }
 
   .speaker-photo_5 {
-    transform: rotate(-30deg);
+    transform: rotate(35deg);
   }
 
   .speaker-photo_6 {
-    transform: rotate(10deg);
+    transform: rotate(-10deg);
   }
 
   .speaker-photo_7 {
-    transform: rotate(-20deg);
+    transform: rotate(-40deg);
   }
 
   .speaker-photo_8 {
