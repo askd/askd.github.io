@@ -79,6 +79,7 @@ a:hover {
 .heading1 {
   margin: 0;
   font-size: var(--heading-h2);
+  text-align: center;
 }
 
 .heading2 {
@@ -110,6 +111,26 @@ a:hover {
   text-decoration: none;
   text-align: center;
   opacity: 1;
+}
+
+.venue {
+  display: flex;
+  flex-direction: column;
+}
+
+.venue-photo {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.venue-photo-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.venue-info {
+  padding-top: 16px;
 }
 
 .schedule {
@@ -236,8 +257,17 @@ a:hover {
     padding: 16px;
   }
 
-  .info-link {
-    margin-top: 8px;
+  .venue {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .venue-photo {
+    margin: 0;
+  }
+
+  .venue-info {
+    padding: 0 0 0 32px;
   }
 
   .schedule {
@@ -297,6 +327,10 @@ a:hover {
 
   .speaker-photo_8 {
     transform: rotate(25deg);
+  }
+
+  .speaker-photo_9 {
+    transform: rotate(-5deg);
   }
 
   .speaker-photo::after {
