@@ -712,6 +712,8 @@
 				const options = { ...chartOptions };
 				if (isBar) {
 					options.legend = 'none';
+				} else {
+					options.pieHole = 0.4;
 				}
 				const chart = new google.visualization[isBar? 'ColumnChart' : 'PieChart']
 					(document.getElementById(chartData.id));
