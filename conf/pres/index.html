@@ -37,7 +37,12 @@
 		.slide .chart {
 			width: 800px;
 			height: 500px;
-			transform: translate(-42%, -42%);
+		}
+		.slide .chart_pie {
+			transform: translate(-50%, -40%);
+		}
+		.slide .chart_bar {
+			transform: translate(-50%, -55%);
 		}
 		.slide .martians {
 			display: flex;
@@ -172,12 +177,6 @@
 	  .speaker-photo_9 {
 	    transform: rotate(-5deg);
 	  }
-		/* .speaker-photo_1,
-		.speaker-photo_4,
-		.speaker-photo_5,
-		.speaker-photo_8 {
-			margin-top: -55px;
-		} */
 		.speaker-photo_2,
 		.speaker-photo_3,
 		.speaker-photo_6,
@@ -254,6 +253,7 @@
 		<img class="cover" src="images/cover.png" alt="" width="1024" height="640">
 		<div class="burnit next"></div>
 		<div class="cover burn burn_later"></div>
+		<!-- если 42*PI то получится порядковый номер в году 12 мая -->
 	</section>
 
 	<section class="slide clear">
@@ -288,7 +288,9 @@
 
 	<section class="slide clear">
 		 <h2>Возраст</h2>
-		<div class="chart cover" id="chart-ages"></div>
+		<div class="chart cover" id="chart-ages">
+			<img src="charts/ages.svg" width="800" height="500" alt="">
+		</div>
 	</section>
 
 	<section class="slide clear" style="background-color: #777">
@@ -296,18 +298,24 @@
 	</section>
 
 	<section class="slide clear">
-		<h2>Время нахождения на Марсе</h2>
-		<div class="chart cover" id="chart-years"></div>
+		<h2 style="background-color: #fff">Время нахождения на Марсе</h2>
+		<div class="chart chart_bar cover" id="chart-years">
+			<img src="charts/years.svg" width="800" height="500" alt="">
+		</div>
 	</section>
 
 	<section class="slide clear">
 		<h2>Роль на Марсе</h2>
-		<div class="chart cover" id="chart-roles"></div>
+		<div class="chart chart_pie cover" id="chart-roles">
+			<img src="charts/roles.svg" width="800" height="500" alt="">
+		</div>
 	</section>
 
 	<section class="slide clear">
 		 <h2>Проекты</h2>
-		<div class="chart cover" id="chart-projects"></div>
+		<div class="chart chart_pie cover" id="chart-projects">
+			<img src="charts/projects.svg" width="800" height="500" alt="">
+		</div>
 	</section>
 
 	<section class="slide clear">
@@ -391,7 +399,9 @@
 
 	<section class="slide clear">
 		 <h2>Категории статей</h2>
-		<div class="chart cover" id="chart-topics"></div>
+		<div class="chart chart_pie cover" id="chart-topics">
+			<img src="charts/topics.svg" width="800" height="500" alt="">
+		</div>
 	</section>
 
 	<section class="slide clear">
@@ -530,6 +540,13 @@
 		<h2 style="color: #663F4C; font-size: 420px; text-align: center;">28</h2>
 	</section>
 
+	<section class="slide clear">
+		 <h2>Diversity</h2>
+		<div class="chart chart_pie cover" id="chart-diversity">
+			<img src="charts/diversity.svg" width="800" height="500" alt="">
+		</div>
+	</section>
+
 	<section class="slide clear" style="background-color: #000">
 		<img class="cover" style="opacity: 0.7" src="images/space.jpg" alt="" width="1024" height="640">
 		<div class="space">
@@ -620,9 +637,8 @@
 					['40+', 3],
 					['35+', 5],
 					['30+', 18],
-					['25+', 14],
+					['25+', 15],
 					['20+', 1],
-					['???', 1],
 				],
 			}, /* Med: 31 */
 			{
@@ -654,11 +670,27 @@
 					['Osome', 3.25],
 					['Amplifr', 2.5],
 				],
-			}
+			},
+			{
+				id: 'chart-diversity',
+				type: 'pie',
+				columns: ['Должность:string', 'Участников:number'],
+				rows: [
+					['Backend', 15],
+					['Frontend', 6],
+					['Manager', 3],
+					['Designer', 2],
+					['DS', 1],
+					['Writer', 1],
+				],
+			},
 		];
 
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawCharts);
+		if (window.google) {
+    	google.charts.load('current', {'packages':['corechart']});
+    	google.charts.setOnLoadCallback(drawCharts);
+		}
+
 		function drawCharts() {
 			const chartOptions = {
 				width: 800,
@@ -681,7 +713,7 @@
 				if (isBar) {
 					options.legend = 'none';
 				}
-				const chart = new google.visualization[isBar? 'BarChart' : 'PieChart']
+				const chart = new google.visualization[isBar? 'ColumnChart' : 'PieChart']
 					(document.getElementById(chartData.id));
         chart.draw(data, options);
 			});
