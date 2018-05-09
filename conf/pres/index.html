@@ -230,19 +230,18 @@
 			position: absolute;
 			width: 16px;
 			height: 16px;
-			margin: -8px;
+			transform: translate(-50%, -50%);
 			border-radius: 50%;
 			background-color: #f66a00;
 			color: #fff;
+			text-align: center;
 			transition: left 3s, top 3s, opacity 0s 3s;
 		}
 		.marker_big {
 			width: 30px;
 			height: 30px;
-			margin: -15px;
 			font-size: 20px;
 			line-height: 30px;
-			text-align: center;
 		}
 		.marker_amsterdam { left: 116px; top: 288px; }
 		.marker_spb { left: 408px; top: 134px; }
@@ -256,9 +255,10 @@
 		.marker_astana { left: 874px; top: 310px; }
 		.marker_dushanbe { left: 845px; top: 516px; }
 		.marker_tbilisi { left: 572px; top: 468px; }
+
 		.marker_all {
-			opacity: 0;
-			transition: opacity 0.25s 2.75s;
+			color: transparent;
+			transition: width 1s 2s, height 1s 2s, color 0.3s 2.7s;
 		}
 
 		.move-to-tbilisi.active ~ .marker {
@@ -266,8 +266,13 @@
 			top: 468px;
 			opacity: 0;
 		}
-		.move-to-tbilisi.active ~ .marker {
+		.move-to-tbilisi.active ~ .marker_all {
+			width: 42px;
+			height: 42px;
+			font-size: 28px;
+			line-height: 42px;
 			opacity: 1;
+			color: #fff;
 		}
 	</style>
 </head>
@@ -613,8 +618,7 @@
 		<div class="marker marker_astana"></div>
 		<div class="marker marker_dushanbe"></div>
 		<div class="marker marker_amsterdam"></div>
-		<div class="marker marker_tbilisi"></div>
-		<div class="marker marker_all marker_tbilisi marker_big">28</div>
+		<div class="marker marker_tbilisi marker_all">28</div>
 	</section>
 
 	<section class="slide clear">
