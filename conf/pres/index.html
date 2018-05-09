@@ -225,6 +225,50 @@
 		.slide.active .logo-footer {
 			transform: translateY(0);
 		}
+
+		.marker {
+			position: absolute;
+			width: 16px;
+			height: 16px;
+			margin: -8px;
+			border-radius: 50%;
+			background-color: #f66a00;
+			color: #fff;
+			transition: left 3s, top 3s, opacity 0s 3s;
+		}
+		.marker_big {
+			width: 30px;
+			height: 30px;
+			margin: -15px;
+			font-size: 20px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.marker_amsterdam { left: 116px; top: 288px; }
+		.marker_spb { left: 408px; top: 134px; }
+		.marker_msk { left: 490px; top: 224px; }
+		.marker_minsk { left: 375px; top: 260px; }
+		.marker_simf { left: 450px; top: 416px; }
+		.marker_kazan { left: 622px; top: 223px; }
+		.marker_samara { left: 632px; top: 273px; }
+		.marker_ekb { left: 752px; top: 200px; }
+		.marker_omsk { left: 898px; top: 240px; }
+		.marker_astana { left: 874px; top: 310px; }
+		.marker_dushanbe { left: 845px; top: 516px; }
+		.marker_tbilisi { left: 572px; top: 468px; }
+		.marker_all {
+			opacity: 0;
+			transition: opacity 0.25s 2.75s;
+		}
+
+		.move-to-tbilisi.active ~ .marker {
+			left: 572px;
+			top: 468px;
+			opacity: 0;
+		}
+		.move-to-tbilisi.active ~ .marker {
+			opacity: 1;
+		}
 	</style>
 </head>
 <body class="shower list">
@@ -272,10 +316,6 @@
 		<h2 style="color: #663F4C; font-size: 420px; text-align: center;">42</h2>
 	</section>-->
 
-	<section class="slide clear">
-		<img class="cover" src="images/map.png" alt="" width="1024" height="640">
-	</section>
-
 	<section class="slide clear" style="background-color: #e65500">
 		<div class="stat">
 			<div></div>
@@ -284,6 +324,10 @@
 			<div></div>
 			<div></div>
 		</div>
+	</section>
+
+	<section class="slide clear">
+		<img class="cover" src="images/map-full.png" alt="" width="1024" height="640">
 	</section>
 
 	<section class="slide clear">
@@ -538,6 +582,39 @@
 
 	<section class="slide clear">
 		<h2 style="color: #663F4C; font-size: 420px; text-align: center;">28</h2>
+	</section>
+
+
+	<section class="slide clear">
+		<img class="cover" src="images/map-empty.png" alt="" width="1024" height="640">
+		<!--
+		spb 408 134
+		msk 490 224
+		minsk 375 260
+		simf 450 416
+		kazan 622 223
+		samara 632 273
+		ekb 752 200
+		omsk 898 240
+		astana 874 310
+		dushanbe 845 516
+		amsterdam 116 288
+		tbilisi 572 468
+		-->
+		<span class="move-to-tbilisi next"></span>
+		<div class="marker marker_spb marker_big">8</div>
+		<div class="marker marker_msk marker_big">10</div>
+		<div class="marker marker_minsk"></div>
+		<div class="marker marker_simf"></div>
+		<div class="marker marker_kazan"></div>
+		<div class="marker marker_samara"></div>
+		<div class="marker marker_ekb"></div>
+		<div class="marker marker_omsk"></div>
+		<div class="marker marker_astana"></div>
+		<div class="marker marker_dushanbe"></div>
+		<div class="marker marker_amsterdam"></div>
+		<div class="marker marker_tbilisi"></div>
+		<div class="marker marker_all marker_tbilisi marker_big">28</div>
 	</section>
 
 	<section class="slide clear">
