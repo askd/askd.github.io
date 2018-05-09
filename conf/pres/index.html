@@ -123,6 +123,9 @@
 		}
 
 		.space {
+
+		}
+		.space-martians {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
@@ -138,13 +141,23 @@
 
 		.speaker-photo {
 	    position: relative;
-	    margin: 21px 55px 64px;
+			margin: 21px 55px 64px;
 	    width: 55px;
 	    height: 55px;
 			border-radius: 28px;
 	    transform-origin: 50% 50%;
 			box-shadow: 0 0 56px #fff;
+		}
+		.space-martians {
+			transform: translateY(-440px);
+			animation-iteration-count: 1;
+			animation-timing-function: ease-in;
+			animation-duration: 30s;
+			animation-fill-mode: forwards;
 	  }
+		.slide.active .space-martians {
+			animation-name: fly;
+		}
 	  .speaker-photo-img {
 	    width: 55px;
 	    height: 55px;
@@ -273,6 +286,11 @@
 			line-height: 42px;
 			opacity: 1;
 			color: #fff;
+		}
+
+		@keyframes fly {
+			0% { transform: translateY(-440px); }
+			100% { transform: translateY(0); }
 		}
 	</style>
 </head>
@@ -631,32 +649,34 @@
 	<section class="slide clear" style="background-color: #000">
 		<img class="cover" style="opacity: 0.7" src="images/space.jpg" alt="" width="1024" height="640">
 		<div class="space">
-			<div class="speaker-photo speaker-photo_1">
-				<img class="speaker-photo-img" src="images/photos/sclinede.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_2">
-				<img class="speaker-photo-img" src="images/photos/mabrek.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_3">
-				<img class="speaker-photo-img" src="images/photos/envek2.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_4">
-				<img class="speaker-photo-img" src="images/photos/darthsim.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_5">
-				<img class="speaker-photo-img" src="images/photos/ssnickolay.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_6">
-				<img class="speaker-photo-img" src="images/photos/palkan2.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_7">
-				<img class="speaker-photo-img" src="images/photos/valerybugakov.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_8">
-				<img class="speaker-photo-img" src="images/photos/demiazz.jpg" width="55" height="55" alt="">
-			</div>
-			<div class="speaker-photo speaker-photo_9">
-				<img class="speaker-photo-img" src="images/photos/brainopia.jpg" width="55" height="55" alt="">
+			<div class="space-martians">
+				<div class="speaker-photo speaker-photo_1">
+					<img class="speaker-photo-img" src="images/photos/sclinede.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_2">
+					<img class="speaker-photo-img" src="images/photos/mabrek.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_3">
+					<img class="speaker-photo-img" src="images/photos/envek2.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_4">
+					<img class="speaker-photo-img" src="images/photos/darthsim.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_5">
+					<img class="speaker-photo-img" src="images/photos/ssnickolay.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_6">
+					<img class="speaker-photo-img" src="images/photos/palkan2.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_7">
+					<img class="speaker-photo-img" src="images/photos/valerybugakov.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_8">
+					<img class="speaker-photo-img" src="images/photos/demiazz.jpg" width="55" height="55" alt="">
+				</div>
+				<div class="speaker-photo speaker-photo_9">
+					<img class="speaker-photo-img" src="images/photos/brainopia.jpg" width="55" height="55" alt="">
+				</div>
 			</div>
 		</div>
 	</section>
