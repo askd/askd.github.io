@@ -221,7 +221,7 @@ a:hover {
   opacity: 0.5;
 }
 
-@media all and (min-width: 700px) {
+@media (min-width: 700px) {
   html {
     font-size: 18px;
   }
