@@ -4,6 +4,8 @@
   --color-brown: #663F4C;
   --color-green: #9FA628;
   --color-orange: #BF6C35;
+  --color-gray: #667;
+  --color-bones: #e5ded9;
   --heading-h1: 2.618em;
   --heading-h2: 1.931em;
   --heading-h3: 1.618em;
@@ -49,6 +51,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   padding: 16px 0;
+  background-color: var(--color-bones);
 }
 
 .logo {
@@ -138,88 +141,6 @@ a:hover {
   padding-top: 16px;
 }
 
-.schedule {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-
-.schedule-title {
-  width: 75%;
-  margin: 16px 0 0 25%;
-  font-size: var(--heading-h4);
-  color: var(--color-light);
-}
-
-.schedule-time {
-  width: 25%;
-  margin-top: 16px;
-  font-weight: 700;
-}
-
-.schedule-event {
-  width: 75%;
-  margin: 16px 0 0;
-}
-
-.schedule-link {
-  margin-top: 8px;
-  font-size: 0.8em;
-}
-
-.schedule-event .schedule-link {
-  margin: 0 0 0 16px;
-}
-
-.schedule-footer {
-  margin-top: 16px;
-  text-align: center;
-}
-
-.event {
-  margin-top: 16px;
-}
-
-.event {
-  font-size: 0.8em;
-}
-
-.talk {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.talk-info {
-  flex-grow: 1;
-}
-
-.talk-title {
-  min-height: 42px;
-}
-
-.talk-title::before {
-  content: '\00ab';
-  margin-left: -9px;
-}
-
-.talk-title::after {
-  content: '\00bb';
-}
-
-.speaker-photo {
-  margin: 0.8em 0 0 0.8em;
-}
-
-.speaker-photo-img {
-  width: 42px;
-  height: 42px;
-  border-radius: 21px;
-}
-
-.speaker-name {
-  font-size: 0.8em;
-  opacity: 0.5;
-}
 
 @media (min-width: 700px) {
   html {
@@ -275,78 +196,39 @@ a:hover {
     padding: 0 0 0 32px;
   }
 
-  .schedule {
-    margin-top: 16px;
+  .copy {
+    text-align: center;
   }
+}
 
-  .schedule-title,
-  .schedule-time {
-    margin-top: 32px;
-  }
+.reviews {
+  text-align: center;
+}
 
-  .schedule-event {
-    margin: 32px 0 0;
-  }
+.review {
+  display: inline-flex;
+  max-width: 12em;
+  border-radius: 6em;
+  margin: 1.25em;
+  padding: 2em;
+  line-height: 1.25;
+}
 
-  .speaker-photo {
-    position: relative;
-    margin: 0 0 0 0.8em;
-    width: 55px;
-    height: 55px;
-    transform-origin: 50% 50%;
-  }
+.review_long {
+  max-width: 18em;
+  border-radius: 9em;
+}
 
-  .speaker-photo-img {
-    width: 55px;
-    height: 55px;
-    border-radius: 28px;
-  }
 
-  .speaker-photo_1 {
-    transform: rotate(-35deg);
-  }
-
-  .speaker-photo_2 {
-    transform: rotate(15deg);
-  }
-
-  .speaker-photo_3 {
-    transform: rotate(40deg);
-  }
-
-  .speaker-photo_4 {
-    transform: rotate(-15deg);
-  }
-
-  .speaker-photo_5 {
-    transform: rotate(35deg);
-  }
-
-  .speaker-photo_6 {
-    transform: rotate(-10deg);
-  }
-
-  .speaker-photo_7 {
-    transform: rotate(-40deg);
-  }
-
-  .speaker-photo_8 {
-    transform: rotate(25deg);
-  }
-
-  .speaker-photo_9 {
-    transform: rotate(-5deg);
-  }
-
-  .speaker-photo::after {
-    content: '';
-    position: absolute;
-    top: -21px;
-    left: 50%;
-    margin-left: -70px;
-    width: 140px;
-    height: 140px;
-    background-image: url(img/astronaut.svg);
-    background-repeat: no-repeat;
-  }
+.review1 {
+  background-color: var(--color-orange);
+}
+.review2 {
+  background-color: var(--color-green);
+}
+.review3 {
+  background-color: var(--color-brown);
+}
+.review4 {
+  background-color: var(--color-gray);
 }
